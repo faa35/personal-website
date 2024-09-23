@@ -11,7 +11,6 @@ public class mainPageController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        model.addAttribute("title", "Welcome to My Personal Website");
         return "mainPage"; 
     }
 
