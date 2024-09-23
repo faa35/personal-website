@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Attach click event listeners to navigation links
     const navLinks = document.querySelectorAll('nav ul li a');
+    //this is same as
+    //const navLinks = document.querySelectorAll("nav > ul > li > a");
+
+    //explaination:
+    //querySelectorAll: This function collects all the <a> elements 
+    //located within nav > ul > li into a NodeList 
+    //(similar to an array but specific to DOM nodes).
     navLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent default link behavior
