@@ -42,6 +42,16 @@
     nav ul li a:hover {
     color: #007BFF;
     }
+
+/* Highlight the active section's link */
+/* A class active is added to the currently visible section's navigation link, making it visually distinct (bold text and left border). */
+nav ul li a.active {
+    color: #007BFF;
+    font-weight: bold;
+    border-left: 3px solid #007BFF; /*  for the line beside the sections */
+}
+
+    
     
     /* Right side (scrollable) */
     .right-panel {
