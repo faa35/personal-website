@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.6 // Change this threshold to control when the highlighting happens
+        threshold: 0.3 // Change this threshold to control when the highlighting happens
+                       //something like 0.2 or 0.1, which means the section will be considered "in view" when 20% or 10% of it is visible.
     };
 
     // Creating the IntersectionObserver:
