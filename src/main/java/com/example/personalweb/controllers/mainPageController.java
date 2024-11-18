@@ -20,11 +20,11 @@ public class mainPageController {
     @GetMapping("/")
     public String homePage(Model model) {
 
-        System.out.println("Our last fm api key: " + lastFmApiKey); // Debugging the API key value(reload the page to get this printed)
+        System.out.println("Our last fm api key: " + lastFmApiKey); // Debugging the API key value(reload the page to get this printed in the terminal)
         model.addAttribute("lastFmApiKey", lastFmApiKey);
 
         model.addAttribute("lastFmUsername", lastFmUsername);
-        System.out.println("Our user name is: " + lastFmUsername); // Debugging the API key value(reload the page to get this printed)
+        System.out.println("Our user name is: " + lastFmUsername); // Debugging the API key value(reload the page to get this printed in the terminal)
 
         return "mainPage"; 
     }
