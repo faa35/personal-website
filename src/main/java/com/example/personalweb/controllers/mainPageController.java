@@ -13,10 +13,19 @@ public class mainPageController {
     @Value("${LAST_FM_API_KEY}")
     private String lastFmApiKey;
 
+    
+    @Value("${LAST_FM_USERNAME}")
+    private String lastFmUsername;
+
     @GetMapping("/")
     public String homePage(Model model) {
+
         System.out.println("Our last fm api key: " + lastFmApiKey); // Debugging the API key value(reload the page to get this printed)
         model.addAttribute("lastFmApiKey", lastFmApiKey);
+
+        model.addAttribute("lastFmUsername", lastFmUsername);
+        System.out.println("Our user name is: " + lastFmUsername); // Debugging the API key value(reload the page to get this printed)
+
         return "mainPage"; 
     }
 
