@@ -15,6 +15,9 @@
             <img id="album-art" src="" alt="Album Art" />
         </div>
     </div>
+    <script th:inline="javascript">
+        var LAST_FM_API_KEY = /*[[${lastFmApiKey}]]*/ 'DEFAULT_KEY'; // Thymeleaf resolves this
+    </script>
 
     <script src="/js/mainPage.js"></script>
 </body>

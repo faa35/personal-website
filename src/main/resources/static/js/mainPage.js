@@ -1,5 +1,5 @@
-const LAST_FM_API_KEY = ''; // Replace with your Last.fm API key
-const LAST_FM_USERNAME = ''; // Replace with your Last.fm username
+
+const LAST_FM_USERNAME = 'a'; // Replace with your Last.fm username
 const LAST_FM_RECENT_TRACKS_URL = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LAST_FM_USERNAME}&api_key=${LAST_FM_API_KEY}&format=json`;
 
 // Step 1: Fetch Last Played Song from Last.fm
