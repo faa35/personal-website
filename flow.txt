@@ -1,0 +1,6 @@
+I tried spotify first but Access tokens obtained from Spotify typically expire in 1 hour. 
+To fix this, refresh the page to re-authenticate, or implement a token refresh mechanism.
+
+but i avoided it and switched to lastFM
+
+
