@@ -1,57 +1,55 @@
-const CLIENT_ID = 'YOUR_CLIENT_ID'; // Replace with my Spotify Client ID
-const REDIRECT_URI = 'http://localhost:8080'; // Replace with my hosted URL
-const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
-const SCOPES = 'user-read-recently-played user-read-playback-state';
 
-// Step 1: Redirect to Spotify Authorization
-function redirectToSpotifyAuth() {
-    const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(
-        REDIRECT_URI
-    )}&scope=${encodeURIComponent(SCOPES)}`;
-    window.location.href = url;
-}
 
-// Step 2: Extract the Access Token from URL
-function getAccessTokenFromUrl() {
-    const hash = window.location.hash;
-    if (!hash) {
-        redirectToSpotifyAuth(); // Redirect user to login if no token
+const LAST_FM_RECENT_TRACKS_URL = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LAST_FM_USERNAME}&api_key=${LAST_FM_API_KEY}&format=json`;
+
+// Step 1: Fetch Last Played Song from Last.fm
+async function getLastPlayedSong() {
+    try {
+        const response = await fetch(LAST_FM_RECENT_TRACKS_URL);
+        if (!response.ok) {
+            throw new Error('Failed to fetch last played song from Last.fm');
+        }
+
+        const data = await response.json();
+        const track = data.recenttracks.track[0]; // Get the most recent track
+
+        const isNowPlaying = track['@attr']?.nowplaying === 'true'; // Check if currently playing
+        const songName = track.name;
+        const artistName = track.artist['#text'];
+        const albumArtUrl = track.image[3]['#text'] || ''; // Use the largest album art available
+
+        return {
+            songName,
+            artistName,
+            albumArtUrl,
+            isNowPlaying
+        };
+    } catch (error) {
+        console.error('Error fetching Last.fm data:', error);
         return null;
     }
-    const params = new URLSearchParams(hash.substring(1)); // Remove `#`
-    return params.get('access_token');
 }
 
-// Step 3: Fetch Last Played Song
-async function getLastPlayedSong(token) {
-    const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
-        headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!response.ok) {
-        throw new Error('Failed to fetch last played song. Please ensure your Spotify account is active.');
-    }
-    const data = await response.json();
-    return data.items[0].track;
-}
-
-// Step 4: Display Song Info
+// Step 2: Display Last Played Song
 async function displayLastPlayedSong() {
-    try {
-        const token = getAccessTokenFromUrl();
-        console.log('Access Token:', token); // Debug access token
-        if (!token) return;
-
-        const song = await getLastPlayedSong(token);
-
-        document.getElementById('song-name').textContent = song.name;
-        document.getElementById('artist-name').textContent = `by ${song.artists.map(artist => artist.name).join(', ')}`;
-        document.getElementById('album-art').src = song.album.images[0].url;
-    } catch (error) {
-        console.error(error);
-        document.getElementById('song-name').textContent = 'Error fetching last played song';
+    const songData = await getLastPlayedSong();
+    if (!songData) {
+        document.getElementById('song-name').textContent = 'Error fetching the last played song';
         document.getElementById('artist-name').textContent = '';
         document.getElementById('album-art').src = '';
+        return;
+    }
+
+    const { songName, artistName, albumArtUrl, isNowPlaying } = songData;
+
+    document.getElementById('song-name').textContent = songName;
+    document.getElementById('artist-name').textContent = `by ${artistName}`;
+    document.getElementById('album-art').src = albumArtUrl || 'default-album-art.jpg';
+
+    if (isNowPlaying) {
+        document.getElementById('song-name').textContent += ' (Now Playing)';
     }
 }
 
+// Call the function to display the last played song
 displayLastPlayedSong();
