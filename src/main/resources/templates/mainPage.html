@@ -1,20 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last Played Song on Last.fm</title>
+    <title>Last Played Song & Discord Profile</title>
     <link rel="stylesheet" href="/css/mainPage.css">
 </head>
 <body>
     <div class="container">
-        <h1>Last Played Song on Last.fm</h1>
-        <div id="song-info">
-            <p id="song-name">Loading...</p>
-            <p id="artist-name"></p>
-            <img id="album-art" src="" alt="Album Art" />
-        </div>
+        <!-- Last.fm Section -->
+        <section id="lastfm-section" class="info-section">
+            <h1>Last Played Song on Last.fm</h1>
+            <div id="song-info">
+                <img id="album-art" src="default-album-art.jpg" alt="Album Art" />
+                <p id="song-name">Loading...</p>
+                <p id="artist-name"></p>
+            </div>
+        </section>
+
+        <!-- Discord Section -->
+        <section id="discord-section" class="info-section">
+            <h1>Discord Profile</h1>
+            <div id="discord-widget" class="discord-widget">
+                <img id="discord-avatar" src="default-avatar.png" alt="Discord Avatar" />
+                <p id="discord-username">Loading...</p>
+                <p id="discord-status"></p>
+                <p id="discord-platform">Active on: Loading...</p> <!-- New platform information -->
+                <div id="discord-activity"></div>
+            </div>
+        </section>
     </div>
+
+    <!-- Pass variables via Thymeleaf -->
     <script th:inline="javascript">
         var LAST_FM_API_KEY = /*[[${lastFmApiKey}]]*/ 'DEFAULT_KEY'; // Thymeleaf resolves this
         var LAST_FM_USERNAME = /*[[${lastFmUsername}]]*/ 'DEFAULT_USERNAME'; // Thymeleaf resolves this
