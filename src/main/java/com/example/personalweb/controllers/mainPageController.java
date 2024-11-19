@@ -17,6 +17,9 @@ public class mainPageController {
     @Value("${LAST_FM_USERNAME}")
     private String lastFmUsername;
 
+    @Value("${DISCORD_USER_ID}")
+    private String discordUserId;
+
     @GetMapping("/")
     public String homePage(Model model) {
 
@@ -25,6 +28,9 @@ public class mainPageController {
 
         model.addAttribute("lastFmUsername", lastFmUsername);
         System.out.println("Our user name is: " + lastFmUsername); // Debugging the API key value(reload the page to get this printed in the terminal)
+
+        model.addAttribute("discordUserId", discordUserId);
+        System.out.println("Our discord user id is: " + discordUserId); // Debugging the API key value(reload the page to get this printed in the terminal)
 
         return "mainPage"; 
     }

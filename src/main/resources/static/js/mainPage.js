@@ -2,7 +2,7 @@
 const LAST_FM_RECENT_TRACKS_URL = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LAST_FM_USERNAME}&api_key=${LAST_FM_API_KEY}&format=json`;
 
 // Discord Variables
-const DISCORD_API_URL = `https://api.lanyard.rest/v1/users/userid`;
+const DISCORD_API_URL = `https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`;
 
 // Fetch Last Played Song from Last.fm
 async function getLastPlayedSong() {
