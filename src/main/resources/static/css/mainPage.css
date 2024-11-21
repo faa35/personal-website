@@ -1,106 +1,166 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: white;
+* {
     margin: 0;
-    padding: 0;
-    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+body {
+    min-height: 100vh;
+    /* background: linear-gradient(45deg, #8b5cf6, #ec4899, #3b82f6); */
+    background: black;
+    padding: 2rem;
 }
 
 .container {
-    margin: 50px auto;
-    max-width: 600px;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Section Styles */
-.info-section {
-    margin-bottom: 40px;
-}
-
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-}
-
-/* Last.fm Styles */
-#song-info {
+.nav {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 70px;
+    margin-top: 10px;
+}
+
+.nav-pills {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    border-radius: 999px;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-pill {
+    padding: 0.5rem 1.5rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-pill.active {
+    background: #000;
+    color: white;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.name-card {
+    margin: 0 auto 1rem; /* Center horizontally with margin auto */
+    /* text-align: center; Align text in the center */
+    
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.profile {
+    font-size: 2rem;
+    color: #ffffff;
+    /* max-width: 600px; */
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+
+.map-card {
+    height: 200px;
+    overflow: hidden;
+}
+
+.map-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resume-card {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-#album-art {
-    width: 250px;
-    height: 250px;
-    margin-bottom: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+.resume-title {
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
-#song-name {
-    font-size: 1.4em;
-    margin-bottom: 5px;
+.theme-toggle {
+    display: flex;
+    gap: 0.5rem;
 }
 
-#artist-name {
-    font-size: 1.2em;
-    color: #cccccc;
+.theme-icon {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
 }
-
-/* Discord Styles */
-.discord-widget {
-    background-color: #23272a;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+.profile-card {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
-
-#discord-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 10px auto;
-    display: block;
+.name {
+    font-size: 7rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    line-height: 1;
+    font-style: italic;
+}
+.bio {
+    font-size: 4rem;
+    color: #000000;
+    /* max-width: 600px; */
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
-#discord-username {
-    font-size: 1.4em;
-    margin-top: 10px;
-    color: #ffffff;
+.other-content {
+    min-height: 100vh;
+    padding: 2rem;
 }
-
-#discord-status {
-    font-size: 1.2em;
-    color: #cccccc;
-    margin-bottom: 15px;
-}
-
-#discord-activity {
-    font-size: 1.1em;
-    color: #dddddd;
-    background-color: #2c2f33;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    word-wrap: break-word;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-    }
-
-    #album-art {
-        width: 200px;
-        height: 200px;
-    }
-
-    #discord-avatar {
-        width: 80px;
-        height: 80px;
-    }
+#typing-text {
+    color: #76ABAE; /* Change this to match your design */
+    font-weight: bold;
 }

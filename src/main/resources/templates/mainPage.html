@@ -1,41 +1,66 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last Played Song & Discord Profile</title>
+    <title>Portfolio Website & Last Played Song & Discord Profile</title>
     <link rel="stylesheet" href="/css/mainPage.css">
 </head>
 <body>
     <div class="container">
-        <!-- Last.fm Section -->
-        <section id="lastfm-section" class="info-section">
-            <h1>Last Played Song on Last.fm</h1>
-            <div id="song-info">
-                <img id="album-art" src="default-album-art.jpg" alt="Album Art" />
-                <p id="song-name">Loading...</p>
-                <p id="artist-name"></p>
+        <nav class="nav">
+            <div class="nav-pills">
+                <div class="nav-pill active"> Home </div>  <!-- for landing page nav active -->
+                <div class="nav-pill"> Projects</div>
+                <div class="nav-pill"> Blogs</div>
             </div>
-        </section>
+        </nav>
 
-        <!-- Discord Section -->
-        <section id="discord-section" class="info-section">
-            <h1>Discord Profile</h1>
-            <div id="discord-widget" class="discord-widget">
-                <img id="discord-avatar" src="default-avatar.png" alt="Discord Avatar" />
-                <p id="discord-username">Loading...</p>
-                <p id="discord-status"></p>
-                <p id="discord-platform">Active on: Loading...</p> <!-- New platform information -->
-                <div id="discord-activity"></div>
+        <div class="name-card">
+            <div class="profile">
+                <!-- <div class="avatar">
+                    <img src="https://avatars.githubusercontent.com/u/15986930?v=4" alt="Profile Picture">
+                </div> -->
+                <div>
+                    <div class="name">Fardin Abdulla</div>
+                </div>
             </div>
-        </section>
+            <div class="bio">
+                I'm a <span id="typing-text"></span>|
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card map-card">
+                <img src="/api/placeholder/400/200" alt="Location Map">
+            </div>
+
+            <div class="card">
+                <div class="resume-card">
+                    <div>
+                        <div class="resume-title">RESUME</div>
+                        <div>2024 CV</div>
+                    </div>
+                    <div class="theme-toggle">
+                        <div class="theme-icon">📥</div>
+                        <div class="theme-icon">👁️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+           
+        </div>
     </div>
 
-    <!-- Pass variables via Thymeleaf -->
-    <script th:inline="javascript">
-        var LAST_FM_API_KEY = /*[[${lastFmApiKey}]]*/ 'DEFAULT_KEY'; // Thymeleaf resolves this
-        var LAST_FM_USERNAME = /*[[${lastFmUsername}]]*/ 'DEFAULT_USERNAME'; // Thymeleaf resolves this
-        var DISCORD_USER_ID = /*[[${discordUserId}]]*/ 'DEFAULT_USER_ID'; // Thymeleaf resolves this
+    <script>
+        document.querySelectorAll('.nav-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelector('.nav-pill.active').classList.remove('active');
+                pill.classList.add('active');
+            });
+        });
     </script>
 
     <script src="/js/mainPage.js"></script>
